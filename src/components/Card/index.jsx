@@ -1,17 +1,14 @@
-import style from './Card.module.css';
-import {memo, useEffect, useRef, useState} from "react";
+import style from './Card.module.scss';
+import {memo, useState} from "react";
 import {Draggable} from "react-beautiful-dnd";
 import Modal from "../Modal";
 import PropTypes from 'prop-types';
+import useAutoFocus from "../../hooks/useAutoFocus";
 
 const Card = ({ content, onUpdate, columnId, cardId, index, description }) => {
     const [isRedact, setIsRedact] = useState(!content);
     const [isOpen, setIsOpen] = useState(false);
-    const ref = useRef(null);
-
-    useEffect(() => {
-        if (isRedact) ref.current.focus();
-    }, [isRedact]);
+    const ref = useAutoFocus({ isRedact });
 
     const deleteCard = () => {
         onUpdate({

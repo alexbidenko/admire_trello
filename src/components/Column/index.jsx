@@ -1,12 +1,14 @@
 import style from './Column.module.css';
 import Card from "../Card";
 import {Draggable, Droppable} from "react-beautiful-dnd";
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {useDispatch} from "react-redux";
+import useAutoFocus from "../../hooks/useAutoFocus";
+import BaseToggle from "./TextToggle";
 
 const Column = ({ title, cards, columnId, index }) => {
     const [isRedact, setIsRedact] = useState(!title);
-    const ref = useRef(null);
+    const ref = useAutoFocus({ isRedact });
     const dispatch = useDispatch();
 
     const addCard = (e) => {
@@ -20,10 +22,6 @@ const Column = ({ title, cards, columnId, index }) => {
         });
     };
 
-    useEffect(() => {
-        if (isRedact) ref.current.focus();
-    }, [isRedact]);
-
     return (
         <Draggable draggableId={`column_${columnId}`} index={index}>
             {(provided) => (
@@ -34,19 +32,13 @@ const Column = ({ title, cards, columnId, index }) => {
                 >
                     <div className={style.column__card}>
                         <div className={style.column__cardHeader} {...provided.dragHandleProps}>
-                            {
-                                isRedact
-                                    ? (
-                                        <input value={title} ref={ref} onChange={(v) => dispatch({
-                                            type: 'update_column_title',
-                                            payload: {
-                                                column_id: columnId,
-                                                title: v.target.value,
-                                            },
-                                        })} onBlur={() => setIsRedact(false)} className={style.column__redactTitle} />
-                                    )
-                                    : <h4 className={style.column__cardTitle} onClick={() => setIsRedact(true)}>{title}</h4>
-                            }
+                            <BaseToggle isRedact={isRedact} content={title} onChange={(v) => dispatch({
+                                type: 'update_column_title',
+                                payload: {
+                                    column_id: columnId,
+                                    title: v.target.value,
+                                },
+                            })} inputRef={ref} onRedactToggle={() => setIsRedact(!isRedact)} />
                         </div>
                         <Droppable
                             droppableId={`column_${columnId}`}
