@@ -1,0 +1,36 @@
+.body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.body__content {
+    padding: 8px 4px;
+    display: flex;
+    width: fit-content;
+    flex: 1;
+    align-items: flex-start;
+}
+
+.body__addColumn {
+    background-color: hsla(0,0%,100%,.24);
+    border-radius: 3px;
+    height: 40px;
+    padding: 10px 12px;
+    color: #fff;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    width: 272px;
+}
+
+.body__addColumn:hover {
+    background-color: #52A4D4;
+}

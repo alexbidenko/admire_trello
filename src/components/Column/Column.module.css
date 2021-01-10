@@ -1,0 +1,112 @@
+.column {
+    padding: 0 4px;
+    width: 272px;
+}
+
+.column__card {
+    background-color: #ebecf0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    padding: 0 8px;
+    position: relative;
+}
+
+.column__cardHeader {
+    padding: 10px 0;
+    position: relative;
+    min-height: 20px;
+    height: 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.column__cardTitle {
+    background: transparent;
+    border-radius: 3px;
+    box-shadow: none;
+    font-weight: 600;
+    padding: 4px 8px;
+    resize: none;
+    max-height: 256px;
+    color: #172b4d;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+    font-size: 14px;
+    user-select: none;
+    width: 100%;
+}
+
+.column__redactTitle {
+    background: transparent;
+    border-radius: 3px;
+    box-shadow: none;
+    font-weight: 600;
+    margin: -4px 0;
+    height: 20px;
+    min-height: 20px;
+    padding: 4px 8px;
+    resize: none;
+    max-height: 256px;
+    color: #172b4d;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+    font-size: 14px;
+    user-select: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.column__cardBody > * {
+    margin-bottom: 8px;
+}
+
+.column__addButton {
+    border-radius: 3px;
+    color: #5e6c84;
+    display: block;
+    flex: 1 0 auto;
+    margin: 2px 0 8px 0;
+    padding: 4px 8px;
+    border: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    height: 28px;
+    cursor: pointer;
+    text-align: left;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+    font-size: 14px;
+}
+
+.column__addButton:hover {
+    background-color: #DADBE2;
+}
+
+.column__deleteButton {
+    border-radius: 3px;
+    color: #5e6c84;
+    display: block;
+    flex: 1 0 auto;
+    padding: 4px 8px;
+    border: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.column__deleteButton:hover {
+    background-color: #DADBE2;
+}
+
+.column__deleteButton span {
+    display: block;
+    transform: rotate(45deg);
+}
