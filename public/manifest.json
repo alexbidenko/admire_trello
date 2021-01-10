@@ -19,8 +19,8 @@
       "sizes": "512x512"
     }
   ],
-  "scope": "/",
-  "start_url": "/?homescreen=1",
+  "scope": "%PUBLIC_URL%/",
+  "start_url": "%PUBLIC_URL%/?homescreen=1",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
