@@ -1,54 +1,54 @@
 .card {
     position: relative;
-}
 
-.card__content {
-    background-color: #fff;
-    border-radius: 3px;
-    box-shadow: 0 1px 0 rgba(9,30,66,.25);
-    cursor: pointer;
-    display: block;
-    color: #172b4d;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-    padding: 6px 32px 6px 8px;
-    transition: background-color 0.3s ease;
-    resize: none;
-    width: 100%;
-    box-sizing: border-box;
-    border: none;
-    outline: none;
-    min-height: 32px;
-}
+    &__content {
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+        cursor: pointer;
+        display: block;
+        color: #172b4d;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+        padding: 6px 32px 6px 8px;
+        transition: background-color 0.3s ease;
+        resize: none;
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+        min-height: 32px;
+    }
 
-.card:hover {
-    background-color: #F4F5F7;
-}
+    &:hover {
+        background-color: #F4F5F7;
+    }
 
-.card__deleteButton {
-    border-radius: 3px;
-    color: #5e6c84;
-    display: block;
-    flex: 1 0 auto;
-    padding: 4px 8px;
-    border: 0;
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-}
+    &__deleteButton {
+        border-radius: 3px;
+        color: #5e6c84;
+        display: block;
+        flex: 1 0 auto;
+        padding: 4px 8px;
+        border: 0;
+        background-color: transparent;
+        transition: background-color 0.3s ease;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+    }
 
-.card__deleteButton:hover {
-    background-color: #DADBE2;
-}
+    &__deleteButton:hover {
+        background-color: #DADBE2;
+    }
 
-.card__deleteButton span {
-    display: block;
-    transform: rotate(45deg);
+    &__deleteButton span {
+        display: block;
+        transform: rotate(45deg);
+    }
 }
