@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   build-and-deploy:
-    runs-on: node:12-alpine
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v2
