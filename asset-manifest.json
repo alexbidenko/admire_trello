@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/admire_trello/static/css/main.4c2d2851.chunk.css",
+    "main.js": "/admire_trello/static/js/main.f29a28d1.chunk.js",
+    "main.js.map": "/admire_trello/static/js/main.f29a28d1.chunk.js.map",
+    "runtime-main.js": "/admire_trello/static/js/runtime-main.90f7c465.js",
+    "runtime-main.js.map": "/admire_trello/static/js/runtime-main.90f7c465.js.map",
+    "static/js/2.52fc5517.chunk.js": "/admire_trello/static/js/2.52fc5517.chunk.js",
+    "static/js/2.52fc5517.chunk.js.map": "/admire_trello/static/js/2.52fc5517.chunk.js.map",
+    "static/css/3.33715e5c.chunk.css": "/admire_trello/static/css/3.33715e5c.chunk.css",
+    "static/js/3.8d40f3ab.chunk.js": "/admire_trello/static/js/3.8d40f3ab.chunk.js",
+    "static/js/3.8d40f3ab.chunk.js.map": "/admire_trello/static/js/3.8d40f3ab.chunk.js.map",
+    "static/js/4.b93d5b65.chunk.js": "/admire_trello/static/js/4.b93d5b65.chunk.js",
+    "static/js/4.b93d5b65.chunk.js.map": "/admire_trello/static/js/4.b93d5b65.chunk.js.map",
+    "index.html": "/admire_trello/index.html",
+    "static/css/3.33715e5c.chunk.css.map": "/admire_trello/static/css/3.33715e5c.chunk.css.map",
+    "static/css/main.4c2d2851.chunk.css.map": "/admire_trello/static/css/main.4c2d2851.chunk.css.map",
+    "static/js/2.52fc5517.chunk.js.LICENSE.txt": "/admire_trello/static/js/2.52fc5517.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.90f7c465.js",
+    "static/js/2.52fc5517.chunk.js",
+    "static/css/main.4c2d2851.chunk.css",
+    "static/js/main.f29a28d1.chunk.js"
+  ]
+}
