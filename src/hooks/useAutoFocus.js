@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
 
-export default ({ isRedact }) => {
+const useAutoFocus = ({ isRedact }) => {
     const ref = useRef(null);
 
     useEffect(() => {
@@ -9,3 +9,5 @@ export default ({ isRedact }) => {
 
     return ref;
 };
+
+export default useAutoFocus;

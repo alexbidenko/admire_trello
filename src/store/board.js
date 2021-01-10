@@ -2,7 +2,7 @@ import {getBoard, saveBoard} from "../api/board";
 
 const initialState = getBoard();
 
-export default (prev = initialState, { type, payload = {} }) => {
+const board = (prev = initialState, { type, payload = {} }) => {
     let newData = [...prev];
     const columnIndex = newData.findIndex((c) => c.id === payload.column_id);
     const column = columnIndex > -1 ? { ...newData[columnIndex] } : null;
@@ -64,3 +64,5 @@ export default (prev = initialState, { type, payload = {} }) => {
     saveBoard(newData);
     return newData;
 };
+
+export default board;
