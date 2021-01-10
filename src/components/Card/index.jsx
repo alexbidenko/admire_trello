@@ -49,7 +49,7 @@ const Card = ({ content, onUpdate, columnId, cardId, index }) => {
                 )}
             </Draggable>
 
-            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} content={content} columnId={columnId} cardId={cardId} />
         </>
     );
 };

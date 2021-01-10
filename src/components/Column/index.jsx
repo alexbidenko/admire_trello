@@ -2,14 +2,16 @@ import style from './Column.module.css';
 import Card from "../Card";
 import {Draggable, Droppable} from "react-beautiful-dnd";
 import {useEffect, useRef, useState} from "react";
+import {useDispatch} from "react-redux";
 
-const Column = ({ title, cards, onUpdate, columnId, index }) => {
+const Column = ({ title, cards, columnId, index }) => {
     const [isRedact, setIsRedact] = useState(!title);
     const ref = useRef(null);
+    const dispatch = useDispatch();
 
     const addCard = (e) => {
         e.preventDefault();
-        onUpdate({
+        dispatch({
             type: 'add_card',
             payload: {
                 column_id: columnId,
@@ -35,7 +37,7 @@ const Column = ({ title, cards, onUpdate, columnId, index }) => {
                             {
                                 isRedact
                                     ? (
-                                        <input value={title} ref={ref} onChange={(v) => onUpdate({
+                                        <input value={title} ref={ref} onChange={(v) => dispatch({
                                             type: 'update_column_title',
                                             payload: {
                                                 column_id: columnId,
@@ -52,13 +54,13 @@ const Column = ({ title, cards, onUpdate, columnId, index }) => {
                         >
                             {innerProvided => (
                                 <div className={style.column__cardBody} ref={innerProvided.innerRef} {...innerProvided.droppableProps}>
-                                    {cards.map((el, index) => <Card key={el.id} content={el.content} onUpdate={onUpdate} columnId={columnId} cardId={el.id} index={index} />)}
+                                    {cards.map((el, index) => <Card key={el.id} content={el.content} onUpdate={dispatch} columnId={columnId} cardId={el.id} index={index} />)}
                                     {innerProvided.placeholder}
                                 </div>
                             )}
                         </Droppable>
                         <button className={style.column__addButton} onClick={addCard}>+ Добавить еще одну карточку</button>
-                        <button className={style.column__deleteButton} onClick={() => onUpdate({
+                        <button className={style.column__deleteButton} onClick={() => dispatch({
                             type: 'delete_column',
                             payload: {
                                 delete_column_id: columnId,

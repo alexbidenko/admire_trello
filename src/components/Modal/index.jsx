@@ -6,7 +6,7 @@ import './ModalTransition.css';
 
 const RedactCard = lazy(() => import("../RedactCard"));
 
-const Modal = ({ isOpen, onClose }) => {
+const Modal = ({ isOpen, onClose, ...props }) => {
     const modals = useMemo(() => {
         return document.getElementById('modals');
     }, []);
@@ -17,7 +17,7 @@ const Modal = ({ isOpen, onClose }) => {
                 <div className={style.modal__overlay} onClick={onClose} />
                 <div className={style.modal__card}>
                     <Suspense fallback="Загрузка...">
-                        <RedactCard />
+                        <RedactCard {...props} />
                     </Suspense>
                 </div>
             </div>
