@@ -10,6 +10,9 @@ export default (prev = initialState, { type, payload = {} }) => {
         case 'update_card':
             column.cards.find((c) => c.id === payload.card_id).content = payload.content;
             break;
+        case 'update_card_description':
+            column.cards.find((c) => c.id === payload.card_id).description = payload.description;
+            break;
         case 'update_column_title':
             column.title = payload.title;
             break;

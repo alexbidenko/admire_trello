@@ -2,8 +2,9 @@ import style from './Card.module.css';
 import {memo, useEffect, useRef, useState} from "react";
 import {Draggable} from "react-beautiful-dnd";
 import Modal from "../Modal";
+import PropTypes from 'prop-types';
 
-const Card = ({ content, onUpdate, columnId, cardId, index }) => {
+const Card = ({ content, onUpdate, columnId, cardId, index, description }) => {
     const [isRedact, setIsRedact] = useState(!content);
     const [isOpen, setIsOpen] = useState(false);
     const ref = useRef(null);
@@ -49,9 +50,18 @@ const Card = ({ content, onUpdate, columnId, cardId, index }) => {
                 )}
             </Draggable>
 
-            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} content={content} columnId={columnId} cardId={cardId} />
+            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} content={content} columnId={columnId} cardId={cardId} description={description} />
         </>
     );
+};
+
+Card.propTypes = {
+    content: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    onUpdate: PropTypes.func.isRequired,
+    columnId: PropTypes.number.isRequired,
+    cardId: PropTypes.number.isRequired,
+    index: PropTypes.number.isRequired,
 };
 
 export default memo(Card);

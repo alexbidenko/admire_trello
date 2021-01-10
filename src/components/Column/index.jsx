@@ -54,7 +54,7 @@ const Column = ({ title, cards, columnId, index }) => {
                         >
                             {innerProvided => (
                                 <div className={style.column__cardBody} ref={innerProvided.innerRef} {...innerProvided.droppableProps}>
-                                    {cards.map((el, index) => <Card key={el.id} content={el.content} onUpdate={dispatch} columnId={columnId} cardId={el.id} index={index} />)}
+                                    {cards.map((el, index) => <Card key={el.id} content={el.content} onUpdate={dispatch} columnId={columnId} cardId={el.id} index={index} description={el.description} />)}
                                     {innerProvided.placeholder}
                                 </div>
                             )}

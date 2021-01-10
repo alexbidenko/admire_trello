@@ -1,7 +1,15 @@
 import style from './RedactCard.module.css';
 import {useDispatch} from "react-redux";
+import React from 'react';
 
-const RedactCard = ({ content, columnId, cardId }) => {
+export type RedactCardProps = {
+    content: string;
+    description?: string;
+    columnId: number;
+    cardId: number;
+};
+
+const RedactCard: React.FC<RedactCardProps> = ({ content, description, columnId, cardId }) => {
     const dispatch = useDispatch();
 
     return (
@@ -17,7 +25,14 @@ const RedactCard = ({ content, columnId, cardId }) => {
                 })} />
                 <p className={style.redactCard__column}>в колонке Название колонки 1</p>
                 <h5 className={style.redactCard__description}>Описание</h5>
-                <textarea className={style.redactCard__textarea} placeholder="Добавить более подробное описание..." />
+                <textarea className={style.redactCard__textarea} placeholder="Добавить более подробное описание..." value={description} onChange={(v) => dispatch({
+                    type: 'update_card_description',
+                    payload: {
+                        description: v.target.value,
+                        column_id: columnId,
+                        card_id: cardId,
+                    }
+                })} />
             </div>
         </div>
     );

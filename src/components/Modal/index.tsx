@@ -1,14 +1,20 @@
 import {CSSTransition} from "react-transition-group";
-import {useMemo, Suspense, lazy} from "react";
+import React, {useMemo, Suspense, lazy} from "react";
 import {createPortal} from "react-dom";
 import style from './Modal.module.css';
 import './ModalTransition.css';
+import {RedactCardProps} from "../RedactCard";
 
 const RedactCard = lazy(() => import("../RedactCard"));
 
-const Modal = ({ isOpen, onClose, ...props }) => {
+type ModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+} & RedactCardProps;
+
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, ...props }) => {
     const modals = useMemo(() => {
-        return document.getElementById('modals');
+        return document.getElementById('modals')!;
     }, []);
 
     return createPortal(
