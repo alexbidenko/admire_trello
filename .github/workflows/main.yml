@@ -16,8 +16,8 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" >> ~/.ssh/id_rsa
-          chmod 700 ~/.ssh/id_rsa
-          eval $(ssh-agent)
+#          chmod 700 ~/.ssh/id_rsa
+#          eval $(ssh-agent)
           ssh-add -k ~/.ssh/id_rsa
 
       - name: Deploy 🚀
