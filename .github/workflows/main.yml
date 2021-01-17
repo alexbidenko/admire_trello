@@ -12,15 +12,9 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Create SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' > ~/.ssh/authorized_keys
-          chmod 700 ~/.ssh
-          chmod 600 ~/.ssh/authorized_keys
-          eval $(ssh-agent)
-          ssh-add ~/.ssh/authorized_keys
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      - uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Deploy 🚀
         run: DOCKER_HOST="ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" docker-compose up -d --build
