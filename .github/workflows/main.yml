@@ -25,6 +25,8 @@ jobs:
           context_name: 'server-deploy'
           ssh_cert: ${{ secrets.HOST }}
           ssh_key: ${{ secrets.SSH_KEY }}
-          use_context: true
+          use_context: 'true'
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       - name: Deploy 🚀
         run: docker-compose up -d
