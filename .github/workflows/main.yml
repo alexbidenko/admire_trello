@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - feature/deploy
+      - feature/deploy_2
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -13,11 +13,12 @@ jobs:
           persist-credentials: false
 
       - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_KEY }}
-          name: id_rsa
-          known_hosts: ${{ secrets.SSH_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" >> ~/.ssh/id_rsa
+          chmod 700 ~/.ssh/id_rsa
+          eval $(ssh-agent)
+          ssh-add -k ~/.ssh/id_rsa
 
       - name: Deploy 🚀
         run: DOCKER_HOST="ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" docker-compose up -d --build
