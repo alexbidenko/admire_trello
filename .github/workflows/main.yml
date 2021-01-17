@@ -15,7 +15,7 @@ jobs:
       - name: Create SSH key
         run: |
           mkdir -p ~/.ssh/
-          echo "${{secrets.HOST}}" > ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
           echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
 
       - name: Create context
