@@ -15,7 +15,7 @@ jobs:
       - name: Create SSH key
         run: |
           mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
           echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
 
       - name: Create context
@@ -23,7 +23,6 @@ jobs:
         with:
           docker_host: ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
           context_name: 'server-deploy'
-          ssh_cert: ${{ secrets.HOST }}
           ssh_key: ${{ secrets.SSH_KEY }}
           use_context: 'true'
         env:
