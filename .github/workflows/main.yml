@@ -14,18 +14,11 @@ jobs:
 
       - name: Create SSH key
         run: |
-          mkdir -p ~/.ssh/
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          eval $(ssh-agen)
+          echo "$SSH_KEY" | tr -d '\r' | ssh-add -
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
           echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
 
-      - name: Create context
-        uses: arwynfr/actions-docker-context@v1
-        with:
-          docker_host: ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
-          context_name: 'server-deploy'
-          ssh_key: ${{ secrets.SSH_KEY }}
-          use_context: 'true'
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       - name: Deploy 🚀
-        run: docker-compose up -d
+        run: DOCKER_HOST="ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" docker-compose up -d --build
