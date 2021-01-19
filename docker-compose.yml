@@ -8,7 +8,6 @@ services:
       - '5880:80'
       - '58443:443'
     volumes:
-      - web-root:/var/www/html
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
     networks:
@@ -18,21 +17,15 @@ services:
     depends_on:
       - application
     volumes:
-      - web-root:/var/www/html
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
     command: certonly --webroot --webroot-path=/var/www/html --email alexbidenko1998@gmail.com --agree-tos --no-eff-email --staging -d trello.admire.social -d www.trello.admire.social
     networks:
       - app-network
+
 volumes:
   certbot-etc:
   certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/sammy/node_project/views/
-      o: bind
 
 networks:
   app-network:
