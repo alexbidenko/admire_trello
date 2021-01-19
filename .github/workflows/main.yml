@@ -14,6 +14,9 @@ jobs:
 
       - name: Install SSH key
         run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
+          echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
           eval $(ssh-agent -s)
           echo "${{ secrets.SSH_KEY }}" | tr -d '\r' | ssh-add - > /dev/null
 
