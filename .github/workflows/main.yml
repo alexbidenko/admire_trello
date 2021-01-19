@@ -17,8 +17,7 @@ jobs:
           mkdir -p ~/.ssh/
           echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
           echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
-          eval $(ssh-agent -s)
-          echo "${{ secrets.SSH_KEY }}" | tr -d '\r' | ssh-add - > /dev/null
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
 
       - name: Deploy 🚀
         run: DOCKER_HOST="ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" docker-compose up -d --build
