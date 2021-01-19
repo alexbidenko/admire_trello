@@ -32,7 +32,7 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/alexander/admire_trello/views/
+      device: /home/alexbidenko/admire_trello/views/
       o: bind
 
 networks:
