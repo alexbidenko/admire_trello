@@ -19,10 +19,5 @@ jobs:
           echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
 
-      - name: Clearing
-        run: |
-          docker container prune
-          docker volume prune
-
       - name: Deploy 🚀
         run: DOCKER_HOST="ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" docker-compose up -d --build

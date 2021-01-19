@@ -28,6 +28,8 @@ volumes:
   certbot-etc:
   certbot-var:
   web-root:
+    driver_opts:
+      o: bind
 
 networks:
   app-network:
