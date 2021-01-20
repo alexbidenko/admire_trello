@@ -1,12 +1,9 @@
 version: '3.8'
 
-networks:
-  web:
-    external: true
-
 services:
-  application:
+  admire_trello:
     restart: unless-stopped
+    container_name: admire_trello
     build: .
-    networks:
-      - web
+    ports:
+      - "5880:80"
