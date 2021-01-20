@@ -5,5 +5,3 @@ services:
     restart: unless-stopped
     container_name: admire_trello
     build: .
-    ports:
-      - "5880:80"
