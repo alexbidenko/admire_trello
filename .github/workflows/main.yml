@@ -18,6 +18,7 @@ jobs:
           echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
           echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
 
       - name: Deploy 🚀
         run: docker-compose up -d --build --remove-orphans
