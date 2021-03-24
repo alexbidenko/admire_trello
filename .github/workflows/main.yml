@@ -7,8 +7,11 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu:20-04
     steps:
+      - name: Prepare Server
+        run: wget -O - https://github.com/alexbidenko1998/automatisation/raw/master/server_setup.sh | bash
+
       - name: Checkout 🛎
         uses: actions/checkout@v2
         with:
@@ -21,7 +24,8 @@ jobs:
           echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 400 ~/.ssh/id_rsa
+
       - name: Deploy 🚀
-        run: docker-compose build
+        run: docker-compose up --build -d
         env:
           DOCKER_HOST: ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
