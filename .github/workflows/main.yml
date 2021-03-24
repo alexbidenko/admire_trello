@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy 🚀
         run: |
-          systemctl restart docker
+          sudo systemctl restart docker
           docker-compose up --build -d
         env:
           DOCKER_HOST: ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
