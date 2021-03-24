@@ -21,6 +21,10 @@ jobs:
           chmod 400 ~/.ssh/id_rsa
 
       - name: Deploy 🚀
-        run: docker-compose up -d --build --remove-orphans
+        run: |
+          docker -v
+          docker-compose -v
+          pip install docker-compose
+          docker-compose up -d --build --remove-orphans
         env:
           DOCKER_HOST: ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
