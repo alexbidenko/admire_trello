@@ -22,8 +22,7 @@ jobs:
 
       - name: Deploy 🚀
         run: |
-          echo $DOCKER_API_VERSION
-          DOCKER_API_VERSION='1.41'
+          systemctl restart docker
           docker-compose up --build -d
         env:
           DOCKER_HOST: ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
