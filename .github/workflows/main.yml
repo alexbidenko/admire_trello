@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu:20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Prepare Server
         run: wget -O - https://github.com/alexbidenko1998/automatisation/raw/master/server_setup.sh | bash
