@@ -12,5 +12,14 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Install SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
+          echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 400 ~/.ssh/id_rsa
       - name: Deploy 🚀
-        run: docker-compose up --build -d
+        run: docker-compose build
+        env:
+          DOCKER_HOST: ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
