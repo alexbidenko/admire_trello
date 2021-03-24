@@ -21,6 +21,8 @@ jobs:
           chmod 400 ~/.ssh/id_rsa
 
       - name: Deploy 🚀
-        run: docker-compose up --build --force-recreate --no-deps -d
+        run: |
+          docker version
+          docker-compose up --build -d
         env:
           DOCKER_HOST: ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
