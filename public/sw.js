@@ -1,4 +1,4 @@
-var CACHE_NAME = 'pwa-task-manager';
+var CACHE_NAME = 'admire_trello';
 var urlsToCache = [
     '',
 ];
@@ -32,7 +32,7 @@ self.addEventListener('fetch', event => {
 
 // Update a service worker
 self.addEventListener('activate', event => {
-    var cacheWhitelist = ['pwa-task-manager'];
+    var cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
