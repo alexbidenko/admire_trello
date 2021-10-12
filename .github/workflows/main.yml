@@ -17,7 +17,6 @@ jobs:
       - name: Install SSH key
         run: |
           mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_HOST }}" > ~/.ssh/known_hosts
           echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 400 ~/.ssh/id_rsa
